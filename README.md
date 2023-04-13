@@ -14,6 +14,7 @@ El proyecto de la aplicación está realizado con Spring Boot 2.7. e IntelliJ
 Las claves de acceso a la aplicación son las siguientes:
 
 Usuario: admin
+
 Contraseña: musica
 
 ## Información de desarrollo
@@ -29,4 +30,5 @@ Puede encontrar más información sobre el desarrollo de esta y otras aplicacion
 ***
 
 EJERCICIOSMESA
+
 José Manuel Rosado
