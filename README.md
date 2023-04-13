@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Aplicación Java Web, realizada con el generador de código Duende (ejerciciosmesa.com/duende)
+Aplicación Java Web, realizada con el generador de código Duende [duende.ejerciciosmesa.com](https://ejerciciosmesa.com/duende)
 Esta aplicación permite gestionar un listado de discos, bandas e instrumentos musicales, y ha sido creada como demostración de uso
 de la herramienta generadora de código Duende.
 
@@ -19,9 +19,9 @@ Contraseña: musica
 
 Puede encontrar más información sobre el desarrollo de esta y otras aplicaciones usando Duende, acuda a las siguientes direcciones:
 
-ejerciciosmesa.com/duende
-duende.ejerciciosmesa.com
-ejerciciosmesa.com
+[ejerciciosmesa.com/duende](https://ejerciciosmesa.com/duende)
+[duende.ejerciciosmesa.com](https://ejerciciosmesa.com/duende)
+[ejerciciosmesa.com](https://ejerciciosmesa.com)
 
 ***
 
