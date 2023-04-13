@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<th:block th:replace="layout/layout :: head-basic"></th:block>
+<th:block th:replace="layout/layout :: bootstrap-css"></th:block>
+<th:block th:replace="layout/layout :: jquery-ui-css"></th:block>
+<th:block th:replace="layout/layout :: general-css"></th:block>
+</head>
+<body>
+	<nav th:replace="layout/layout :: menu"></nav>
+	<div th:replace="layout/layout :: screen-title"></div>
+	<div th:replace="layout/layout :: messages-zone"></div>
+
+	<div class="container py-1">
+
+		<div class="row justify-content-center mt-3 ms-1 me-1">
+			<div class="col-12 formclass create-form shadow">
+				<form class="mt-3" th:object="${disco}" method="post"
+					th:action="@{/disco/form}" enctype="multipart/form-data">
+
+					<div class="row g-3 align-items-center mb-3">
+	<div class="col-md-2">
+		<label for="titulo" class="form-label mb-0 fw-bold">Titulo: </label>
+	</div>
+	<div class="col-md-4 mt-1 mt-md-3">
+		<input type="text" class="form-control form-control-sm" id="titulo"
+			th:field="*{titulo}">
+	</div>
+	<span class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:uerrors="*{titulo}"></span>
+</div>
+<div class="row g-3 align-items-center mb-3">
+	<div class="col-md-2">
+		<label for="autor" class="form-label mb-0 fw-bold">Autor: </label>
+	</div>
+	<div class="col-md-4 mt-1 mt-md-3">
+		<input type="text" class="form-control form-control-sm" id="autor"
+			th:field="*{autor}">
+	</div>
+	<span class="text-danger" th:if="${#fields.hasErrors('autor')}" th:uerrors="*{autor}"></span>
+</div>
+<div class="row g-3 align-items-center mb-3">
+	<div class="col-md-2">
+		<label for="anoLanzamiento" class="form-label mb-0 fw-bold">AnoLanzamiento: </label>
+	</div>
+	<div class="col-md-4 mt-1 mt-md-3">
+		<input type="text" class="form-control form-control-sm" id="anoLanzamiento"
+			th:field="*{anoLanzamiento}">
+	</div>
+	<span class="text-danger" th:if="${#fields.hasErrors('anoLanzamiento')}" th:uerrors="*{anoLanzamiento}"></span>
+</div>
+<div class="row g-3 align-items-center mb-3">
+	<div class="col-md-2">
+		<label for="caratula" class="form-label mb-0 fw-bold">Caratula: </label>
+	</div>
+						
+	<div class="col-md-4 mt-1 mt-md-3" > 
+		<div class="col-12 mt-1 mb-1" th:if="${disco.caratula != null}">
+			<div class="col-md-12 mt-1 mt-md-3"  id="caratulaImageDiv">
+				<table>
+					<tr><td>
+						<a th:href="@{'/disco/viewimg/'+${disco.id}+'/caratula'}" title="View Caratula">
+							<img th:if="${disco.caratula != null}" th:src="@{'/upload/' + ${disco.caratula}}" width="100px" class="border border-white shadow" id="caratulaImage"><br>
+						</a>
+						</td>
+						<td class="ps-2">
+							<a sec:authorize="hasRole('ROLE_ADMIN')" href="#" title="Delete Caratula" th:attr="onclick=|clearImageField('caratulaImage','caratulaImageText','caratulaImageDiv')|"><svg th:replace="layout/icons_svg :: svg-delete"></svg></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-12 mt-2">
+			<input class="form-control form-control-sm file" type="file" id="caratula" name="caratula_formname">
+			
+			<input type="hidden" class="form-control form-control-sm" id="caratulaImageText" name="caratulaImageText" th:value="${disco.caratula}">
+			<input type="hidden" class="form-control form-control-sm" id="caratulaImageTextOld" name="caratulaImageTextOld" th:value="${disco.caratula}">
+		</div>
+		</div>
+</div>
+
+
+					<div class="row g-3 align-items-center mb-3">
+						<div class="col-md-2 mt-4">
+							<input class="btn standard-button"
+								sec:authorize="hasRole('ROLE_ADMIN')" type="submit"
+								th:value="${#strings.equalsIgnoreCase(screen,'CREATE')?'Create':'Update'}"> 
+							<input
+								sec:authorize="!hasRole('ROLE_ADMIN')" type="submit"
+								th:value="${#strings.equalsIgnoreCase(screen,'CREATE')?'Create':'Update'}"  
+								disabled>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:replace="layout/layout :: authorship"></div>
+
+	<div th:insert="layout/layout :: jquery-js"></div>
+	<div th:insert="layout/layout :: jquery-ui-js"></div>
+	<div th:insert="layout/layout :: bootstrap-js"></div>
+	
+	
+	
+	<script th:replace="layout/layout :: clear_imagefield"></script>
+	
+	
+</body>
+</html>
